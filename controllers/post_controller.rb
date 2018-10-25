@@ -19,18 +19,23 @@ class PostController<Sinatra::Base
     case id
     when "burritos"
         @title = "Burritos"
+        @id = id
         erb :'food/burritos'
       when "chimichanga"
         @title = "Chimichanga"
+        @id = id
         erb :'food/chimichanga'
       when "enchiladas"
         @title = "Enchiladas"
+        @id = id
         erb :'food/enchiladas'
       when "fajitas"
         @title = "Fajitas"
+        @id = id
         erb :'food/fajitas'
       when "tacos"
         @title = "Tacos"
+        @id = id
         erb :'food/tacos'
       else
         "<h1>HTTP Error 404 (Page not found)</h1>"
