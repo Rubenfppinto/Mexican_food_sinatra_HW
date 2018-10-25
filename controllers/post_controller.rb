@@ -3,6 +3,8 @@ class PostController<Sinatra::Base
 
     set :view, Proc.new { File.join(root, "views") }
 
+    set :public_folder, File.dirname(__FILE__) + '/static'
+
   configure:development do
     register Sinatra::Reloader
   end
@@ -15,7 +17,7 @@ class PostController<Sinatra::Base
   get "/:id" do
     id = params[:id]
     case id
-      when "burritos"
+    when "burritos"
         @title = "Burritos"
         erb :'food/burritos'
       when "chimichanga"
