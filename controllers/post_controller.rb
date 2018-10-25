@@ -3,8 +3,6 @@ class PostController<Sinatra::Base
 
     set :view, Proc.new { File.join(root, "views") }
 
-    set :public_folder, File.dirname(__FILE__) + '/static'
-
   configure:development do
     register Sinatra::Reloader
   end
@@ -15,27 +13,19 @@ class PostController<Sinatra::Base
   end
 
   get "/:id" do
-    id = params[:id]
+    id = params[:id].downcase
+    @title = id
+    @id = id
     case id
-    when "burritos"
-        @title = "Burritos"
-        @id = id
+      when "burritos"
         erb :'food/burritos'
       when "chimichanga"
-        @title = "Chimichanga"
-        @id = id
         erb :'food/chimichanga'
       when "enchiladas"
-        @title = "Enchiladas"
-        @id = id
         erb :'food/enchiladas'
       when "fajitas"
-        @title = "Fajitas"
-        @id = id
         erb :'food/fajitas'
       when "tacos"
-        @title = "Tacos"
-        @id = id
         erb :'food/tacos'
       else
         "<h1>HTTP Error 404 (Page not found)</h1>"
